@@ -36,6 +36,7 @@ class Game extends Emitter {
     if (debug) {
       this.debug = true;
       this.columnHistory = [];
+      this.activityHistory = [];
     } else {
       this.debug = false;
     }
@@ -61,6 +62,7 @@ class Game extends Emitter {
     this.type = null;
     if (this.debug) {
       this.columnHistory.length = 0;
+      this.activityHistory.length = 0;
     }
   }
 
@@ -144,10 +146,36 @@ class Game extends Emitter {
     this.emit('player:place-chip', this.grid.lastPlacedChip);
     if (this.debug) {
       this.columnHistory.push(column);
+      // console.log(this.columnHistory.length)
       // The column history will only be logged on non-production sites, so we
       // can safely disable the ESLint error
       // eslint-disable-next-line no-console
-      console.log(this.columnHistory.join(', '));
+      // console.log(this.columnHistory.join(', '));
+      if(this.columnHistory.length % 2 === 0){
+        let playerTwoMove = this.columnHistory[this.columnHistory.length-1];
+        let playerOneMove = this.columnHistory[this.columnHistory.length-2];
+        // playersArray = new players({player: 'Player 1', "outcome": playerOneMove}, {player: 'Player 2', "outcome": playerTwoMove});
+        // roundResult = new roundResult("dummyId", this.columnHistory.length % 2, playersArray);
+        // console.log(roundResult.gameId, roundResult.roundId, roundResult.players);
+        this.activityHistory.push(
+          {
+            "gameId": "dummyId",
+            "roundId": this.columnHistory.length / 2,
+            "players": [
+              {
+                "player": "player 1",
+                "outcome": playerOneMove
+              },
+              {
+                "player": "player 2",
+                "outcome": playerTwoMove
+              }
+            ]
+          }
+        );
+
+        console.log(JSON.stringify(this.activityHistory[this.activityHistory.length-1], null, "\t"));
+      }
     }
     this.pendingChip = null;
     // Check for winning connections (i.e. four in a row)
@@ -229,6 +257,17 @@ class Game extends Emitter {
     this.checkForTie();
   }
 
+}
+
+function roundResult (gameId, roundId, players){
+  this.gameId = gameId;
+  this.roundId = roundId;
+  this.players = players;
+}
+
+function players (player1, player2){
+  this.player1 = player1;
+  this.player2 = player2;
 }
 
 // The minimum number of chips a connection must have to win the game
