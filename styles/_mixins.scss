@@ -1,0 +1,24 @@
+// Mixins that can be used across all Sass partials
+
+// Add mixin for hybrid layout media query (triggers when the viewport width is
+// smaller than the width of the grid)
+@mixin if-hybrid-layout() {
+  @media (max-width: $page-max-width-hybrid) {
+    @content;
+  }
+}
+
+// Add mixin for compact layout media query (triggers when the viewport width is
+// smaller than the width of the grid)
+@mixin if-compact-layout() {
+  @media (max-width: $page-max-width-compact) {
+    @content;
+  }
+}
+
+// Add mixin to style elements when Dark Mode is enabled on the user's OS
+@mixin dark-mode() {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}

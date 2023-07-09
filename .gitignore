@@ -1,0 +1,19 @@
+# OS-generated files
+.DS_Store
+
+# Node.js files
+node_modules
+*.log
+
+# Coverage data
+coverage
+.nyc_output
+
+# Generated PNG app icons
+app/assets/icons/png
+
+# Gulp
+dist/
+
+# Private environment variables for deployment
+.env
