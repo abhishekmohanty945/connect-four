@@ -2,18 +2,13 @@ import m from 'mithril';
 import Session from '../models/session.js';
 import GameComponent from './game.js';
 import UpdateNotificationComponent from './update-notification.js';
-// import {ethers} from "ethers";
-import Web3 from 'web3';
 
 class AppComponent {
 
-  async oninit({ attrs = { roomCode: null } }) {
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // await provider.send("eth_requestAccounts", []);
-    // const signer = provider.getSigner();
+  oninit({ attrs = { roomCode: null } }) {
     this.session = new Session({
       url: window.location.origin,
-      roomCode: attrs.roomCode,
+      roomCode: attrs.roomCode
     });
   }
 
