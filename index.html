@@ -33,6 +33,15 @@
 
     <main></main>
 
+    <div id="console-log-output"></div>
+    <script type="module">
+      console.log = function (message) {
+        var logElement = document.createElement("p");
+        logElement.textContent = message;
+        document.getElementById("console-log-output").appendChild(logElement);
+      };
+    </script>
+
     <script type="module" src="/scripts/index.js"></script>
   </body>
 </html>
