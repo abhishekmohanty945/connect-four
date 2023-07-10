@@ -33,6 +33,7 @@
   "homepage": "https://github.com/caleb531/connect-four#readme",
   "dependencies": {
     "@fontsource/ubuntu": "^5.0.0",
+    "buffer": "^6.0.3",
     "clipboard": "^2.0.11",
     "compression": "^1.7.4",
     "ecurve": "^1.0.6",

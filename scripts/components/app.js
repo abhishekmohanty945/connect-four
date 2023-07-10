@@ -13,6 +13,10 @@ class AppComponent {
   }
 
   view({ attrs = { roomCode: null } }) {
+    const sdk = new window.ontropy.OntropySDK();
+    console.log("ontropy object", sdk);
+    const gameData = sdk.startNewGame();
+    console.log("gameData: ", gameData.gameId);
     return m("div#app", [
       // The UpdateNotificationComponent manages its own visibility
       m(UpdateNotificationComponent),

@@ -126,7 +126,7 @@ async function createExpressServer() {
   // transformHtml()
   app.get(['/', '/index.html'], async (req, res) => {
     await transformHtml(vite, req, res, indexPath, {
-      pageTitle: 'Caleb Evans'
+      pageTitle: 'Ontropy'
     });
   });
 
