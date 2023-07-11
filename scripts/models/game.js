@@ -42,7 +42,7 @@ class Game extends Emitter {
     }
     this.sdk = new window.ontropy.OntropySDK();
     this.gameData = this.sdk.startNewGame();
-    this.opponentSigner = this.sdk.OntropySigner(0);
+    this.opponentSigner = this.sdk.createSigner();
     this.sdk.addPlayer(this.opponentSigner.getPublicKey().buffer);
   }
 
@@ -163,6 +163,7 @@ class Game extends Emitter {
         // playersArray = new players({player: 'Player 1', "outcome": playerOneMove}, {player: 'Player 2', "outcome": playerTwoMove});
         // roundResult = new roundResult("dummyId", this.columnHistory.length % 2, playersArray);
         // console.log(roundResult.gameId, roundResult.roundId, roundResult.players);
+
         this.activityHistory.push(
           {
             "gameId": "dummyId",
