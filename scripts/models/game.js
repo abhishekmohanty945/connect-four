@@ -89,7 +89,7 @@ class Game extends Emitter {
       if (gameType === '1P') {
         // If user chose 1-Player mode, the user will play against the AI
         this.players.push(new HumanPlayer({ name: 'Human', color: 'red' }));
-        this.players.push(new AIPlayer({ name: 'Mr. A.I.', color: 'black' }));
+        this.players.push(new AIPlayer({ name: 'Computer', color: 'black' }));
       } else if (gameType === '2P') {
         // If user chooses 2-Player mode, the user will play against another
         // human
