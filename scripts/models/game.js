@@ -194,14 +194,39 @@ class Game extends Emitter {
         console.log("Nonces collected for this round: ", noncesThisRound);
 
         // ontropySignature here
+        const ontropySignature = this.sdk.createOntropySignature(
+          this.gameData.signer,
+          noncesThisRound,
+          encodedMessage
+        );
+        console.log("player signature output: ", ontropySignature);
 
         // opponentOntropySignature
+        const opponentOntropySignature = this.sdk.createOntropySignature(
+          this.opponentSigner,
+          noncesThisRound,
+          encodedMessage
+        );
 
         // signaturesThisRound
-
+        const signaturesThisRound = [
+          ontropySignature.signature,
+          opponentOntropySignature.signature
+        ];
+        console.log("signatures collected this round: ", signaturesThisRound);
         // combinedPublicKey
-
+        const combinedPublicKey = this.sdk.getGroupPublicKey(this.gameData.signer);
+        console.log("combined public key: ", combinedPublicKey.toHex());
         // schnorrSignature here
+        const schnorrSignature = this.sdk.computeSchnorrSignature(
+          signaturesThisRound,
+          combinedPublicKey,
+          ontropySignature
+        );
+        
+        console.log("Round Proof generated: ", schnorrSignature);
+        this.gameData.roundId = this.sdk.startNewRound(this.gameData.gameId);
+        
       }
     }
     this.pendingChip = null;
