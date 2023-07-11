@@ -109,7 +109,9 @@ class GameComponent {
       },
       [
         m("div.game-column", [
-          m("h1", "Connect Four"),
+          m("h1.game-title", "Connect Four", [
+            m("div.tag-line", "powered by Ontropy SDK")
+          ]),
           m("h3", "Powered By Ontropy"),
           m(DashboardComponent, {
             game: this.game,

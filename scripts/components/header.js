@@ -3,7 +3,7 @@ import classNames from "../classnames.js";
 class Header {
     view() {
         return (
-            "div#game",
+            "div#header",
             [
                 m("div.header", [
                     m("img.logo[src='./icons/logo-white.webp']", "Logo Text"),

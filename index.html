@@ -19,10 +19,12 @@
   </head>
   <style>
     #myDIV {
-      height: 250px;
-      width: 100vw;
+      display: block;
+      width: 90%;
+      overflow-wrap: break-word;
+      margin: 100px auto;
+      max-height: 300px;
       overflow: auto;
-      background: #111111;
     }
     </style>
   <body>
@@ -57,11 +59,5 @@
 
     <script type="module" src="/scripts/index.js"></script>
     <script src="/scripts/bundle.js"></script>
-    <script type="module">
-      function myFunction() {
-        const element = document.getElementById("console-log-output");
-        element.scrollIntoView();
-      };
-    </script>
   </body>
 </html>
