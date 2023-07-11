@@ -21,3 +21,14 @@ h1 {
     right: $position-x;
   }
 }
+
+.header {
+  text-align: left;
+  padding: 26px 20px;
+  background-color: black;
+
+  img {
+    max-height: 28px;
+    object-fit: cover;
+  }
+}
