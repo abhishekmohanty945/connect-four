@@ -146,10 +146,11 @@ class Game extends Emitter {
 
   // Insert the current pending chip into the columns array at the given index
   placePendingChip({ column }) {
-    this.grid.placeChip({
+    let chip_row = this.grid.placeChip({
       chip: this.pendingChip,
       column
     });
+    // console.log(chip_row, column);
     this.emit('player:place-chip', this.grid.lastPlacedChip);
     if (this.debug) {
       this.columnHistory.push(column);
@@ -158,11 +159,9 @@ class Game extends Emitter {
       // eslint-disable-next-line no-console
       // console.log(this.columnHistory.join(', '));
       if(this.columnHistory.length % 2 === 0){
-        let playerTwoMove = this.columnHistory[this.columnHistory.length-1];
-        let playerOneMove = this.columnHistory[this.columnHistory.length-2];
-        // playersArray = new players({player: 'Player 1', "outcome": playerOneMove}, {player: 'Player 2', "outcome": playerTwoMove});
-        // roundResult = new roundResult("dummyId", this.columnHistory.length % 2, playersArray);
-        // console.log(roundResult.gameId, roundResult.roundId, roundResult.players);
+        let playerTwoMove = `${chip_row}${this.columnHistory[this.columnHistory.length-1]}`;
+        let playerOneMove = `${chip_row}${this.columnHistory[this.columnHistory.length-2]}`;
+        // console.log("playerone move: ", playerTwoMove)
 
         this.activityHistory.push(
           {

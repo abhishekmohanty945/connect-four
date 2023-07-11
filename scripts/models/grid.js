@@ -53,6 +53,7 @@ class Grid {
     this.lastPlacedChip = chip;
     chip.column = column;
     chip.row = this.columns[column].length - 1;
+    return chip.row;
   }
 
   // Find same-color neighbors connected to the given chip in the given direction
