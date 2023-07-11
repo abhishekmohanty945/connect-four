@@ -181,7 +181,8 @@ class Game extends Emitter {
           }
         );
         let roundResult = this.activityHistory[this.activityHistory.length-1];
-        console.log(JSON.stringify(roundResult, null, "\t"));
+        console.log("Result for this round: ");
+        console.log(roundResult);
 
         // TODO: Encoded message here
         let encodedMessage = this.sdk.encodeMessage(roundResult);
@@ -191,7 +192,9 @@ class Game extends Emitter {
           this.gameData.signer.getPublicNonces(),
           this.opponentSigner.getPublicNonces()
         ];
-        console.log("Nonces collected for this round: ", noncesThisRound);
+        console.log("Nonces collected for this round: ");
+        console.log(noncesThisRound[0]);
+        console.log(noncesThisRound[1]);
 
         // ontropySignature here
         const ontropySignature = this.sdk.createOntropySignature(
@@ -199,7 +202,8 @@ class Game extends Emitter {
           noncesThisRound,
           encodedMessage
         );
-        console.log("player signature output: ", ontropySignature);
+        console.log("player signature output: ");
+        console.log(ontropySignature);
 
         // opponentOntropySignature
         const opponentOntropySignature = this.sdk.createOntropySignature(
@@ -213,10 +217,13 @@ class Game extends Emitter {
           ontropySignature.signature,
           opponentOntropySignature.signature
         ];
-        console.log("signatures collected this round: ", signaturesThisRound);
+        console.log("signatures collected this round:");
+        console.log(signaturesThisRound[0].toHex());
+        console.log(signaturesThisRound[1].toHex());
         // combinedPublicKey
         const combinedPublicKey = this.sdk.getGroupPublicKey(this.gameData.signer);
-        console.log("combined public key: ", combinedPublicKey.toHex());
+        console.log("combined public key: ");
+        console.log(combinedPublicKey.toHex());
         // schnorrSignature here
         const schnorrSignature = this.sdk.computeSchnorrSignature(
           signaturesThisRound,
