@@ -45,8 +45,8 @@ dependencies:
     specifier: ^2.29.4
     version: 2.29.4
   ontropy-sdk:
-    specifier: ^0.0.3
-    version: 0.0.3
+    specifier: ^0.0.2
+    version: 0.0.2
   open:
     specifier: ^9.1.0
     version: 9.1.0
@@ -4182,8 +4182,8 @@ packages:
       mimic-fn: 4.0.0
     dev: false
 
-  /ontropy-sdk@0.0.3:
-    resolution: {integrity: sha512-GeOy4bmd9eAHl1he49H3Bz7qapMuGSXFBIRrk7Zrw2WVtBX/4apiFXfa9K5/XM0zjYIDpxTqRMKtLuAB3At0Zg==}
+  /ontropy-sdk@0.0.2:
+    resolution: {integrity: sha512-mDPgM1mn/7inhCo8imPk/pc+2LWcPg4oODRgQnxmkheTuRdpvPif+xeVxiZ7E3EiWnqrwy8FHHMu2w9ypoFIOA==}
     dependencies:
       ecurve: 1.0.6
       ethers: 5.7.2

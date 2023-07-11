@@ -40,6 +40,10 @@ class Game extends Emitter {
     } else {
       this.debug = false;
     }
+    this.sdk = new window.ontropy.OntropySDK();
+    this.gameData = this.sdk.startNewGame();
+    this.opponentSigner = this.sdk.OntropySigner(0);
+    this.sdk.addPlayer(this.opponentSigner.getPublicKey().buffer);
   }
 
   startGame({ startingPlayer } = {}) {
@@ -51,6 +55,8 @@ class Game extends Emitter {
     this.inProgress = true;
     this.emit('game:start');
     this.startTurn();
+
+    // ontropy.startnewgame
   }
 
   // End the game without resetting the grid
@@ -64,6 +70,7 @@ class Game extends Emitter {
       this.columnHistory.length = 0;
       this.activityHistory.length = 0;
     }
+    // ontropy.endgame() here
   }
 
   // Reset the game and grid completely without starting a new game (endGame
@@ -146,7 +153,6 @@ class Game extends Emitter {
     this.emit('player:place-chip', this.grid.lastPlacedChip);
     if (this.debug) {
       this.columnHistory.push(column);
-      // console.log(this.columnHistory.length)
       // The column history will only be logged on non-production sites, so we
       // can safely disable the ESLint error
       // eslint-disable-next-line no-console
@@ -173,8 +179,28 @@ class Game extends Emitter {
             ]
           }
         );
+        let roundResult = this.activityHistory[this.activityHistory.length-1];
+        console.log(JSON.stringify(roundResult, null, "\t"));
 
-        console.log(JSON.stringify(this.activityHistory[this.activityHistory.length-1], null, "\t"));
+        // TODO: Encoded message here
+        let encodedMessage = this.sdk.encodeMessage(roundResult);
+        // console.log(encodedMessage);
+        // Nonce for this round here
+        let noncesThisRound = [
+          this.gameData.signer.getPublicNonces(),
+          this.opponentSigner.getPublicNonces(),
+        ];
+        console.log("Nonces collected for this round: ", noncesThisRound);
+
+        // ontropySignature here
+
+        // opponentOntropySignature
+
+        // signaturesThisRound
+
+        // combinedPublicKey
+
+        // schnorrSignature here
       }
     }
     this.pendingChip = null;

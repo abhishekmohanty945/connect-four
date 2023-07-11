@@ -2,6 +2,7 @@
 import m from 'mithril';
 import ClipboardJS from 'clipboard';
 
+// import { EncodedMsg, RoundResult } from 'ontropy-sdk/src/interface';
 class DashboardControlsComponent {
 
   oninit({ attrs: { game, session } }) {

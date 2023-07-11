@@ -45,7 +45,7 @@
     "merkletreejs": "^0.3.10",
     "mithril": "^2.2.2",
     "moment": "^2.29.4",
-    "ontropy-sdk": "^0.0.3",
+    "ontropy-sdk": "^0.0.2",
     "open": "^9.1.0",
     "process": "^0.11.10",
     "secp256k1": "^5.0.0",
