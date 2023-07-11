@@ -38,7 +38,8 @@ export default {
     "http://localhost:24678",
     "https://fonts.googleapis.com",
     "https://fonts.gstatic.com",
-    "https://plausible.io"
+    "https://plausible.io",
+    "https://polygon-mumbai.g.alchemy.com"
   ],
   'manifest-src': [
     "'self'"

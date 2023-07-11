@@ -3,7 +3,7 @@ import m from "mithril";
 import Session from "../models/session.js";
 import GameComponent from "./game.js";
 import UpdateNotificationComponent from "./update-notification.js";
-import Header from "./header.js"
+import Header from "./header.js";
 
 class AppComponent {
   oninit({ attrs = { roomCode: null } }) {

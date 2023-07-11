@@ -233,7 +233,12 @@ class Game extends Emitter {
         
         console.log("Round Proof generated: ", schnorrSignature);
         this.gameData.roundId = this.sdk.startNewRound(this.gameData.gameId);
-        
+        this.sdk.verifySchnorrSignature(schnorrSignature, encodedMessage).then((res) => {
+          console.log("Round proof verified:");
+          console.log(res[0]);
+          console.log("Transaction link:");
+          console.log(res[1].toString());
+        });
       }
     }
     this.pendingChip = null;
