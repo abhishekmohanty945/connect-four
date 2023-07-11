@@ -150,17 +150,18 @@ class Game extends Emitter {
       chip: this.pendingChip,
       column
     });
+    let activity = `${chip_row}${column}`;
     // console.log(chip_row, column);
     this.emit('player:place-chip', this.grid.lastPlacedChip);
     if (this.debug) {
-      this.columnHistory.push(column);
+      this.columnHistory.push(activity);
       // The column history will only be logged on non-production sites, so we
       // can safely disable the ESLint error
       // eslint-disable-next-line no-console
       // console.log(this.columnHistory.join(', '));
       if(this.columnHistory.length % 2 === 0){
-        let playerTwoMove = `${chip_row}${this.columnHistory[this.columnHistory.length-1]}`;
-        let playerOneMove = `${chip_row}${this.columnHistory[this.columnHistory.length-2]}`;
+        let playerTwoMove = this.columnHistory[this.columnHistory.length-1];
+        let playerOneMove = this.columnHistory[this.columnHistory.length-2];
         // console.log("playerone move: ", playerTwoMove)
 
         this.activityHistory.push(
