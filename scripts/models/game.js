@@ -166,15 +166,15 @@ class Game extends Emitter {
 
         this.activityHistory.push(
           {
-            "gameId": "dummyId",
-            "roundId": this.columnHistory.length / 2,
+            "gameId": this.gameData.gameId,
+            "roundId": this.gameData.roundId,
             "players": [
               {
-                "player": "player 1",
+                "player": this.gameData.signer.getPublicKey().toHex(),
                 "outcome": playerOneMove
               },
               {
-                "player": "player 2",
+                "player": this.opponentSigner.getPublicKey().toHex(),
                 "outcome": playerTwoMove
               }
             ]
@@ -189,7 +189,7 @@ class Game extends Emitter {
         // Nonce for this round here
         let noncesThisRound = [
           this.gameData.signer.getPublicNonces(),
-          this.opponentSigner.getPublicNonces(),
+          this.opponentSigner.getPublicNonces()
         ];
         console.log("Nonces collected for this round: ", noncesThisRound);
 
