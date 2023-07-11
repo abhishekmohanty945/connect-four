@@ -193,8 +193,8 @@ class Game extends Emitter {
           this.opponentSigner.getPublicNonces()
         ];
         console.log("Nonces collected for this round: ");
-        console.log(noncesThisRound[0]);
-        console.log(noncesThisRound[1]);
+        console.log(noncesThisRound[0].kPublic.toHex());
+        console.log(noncesThisRound[1].kPublic.toHex());
 
         // ontropySignature here
         const ontropySignature = this.sdk.createOntropySignature(
@@ -203,7 +203,7 @@ class Game extends Emitter {
           encodedMessage
         );
         console.log("player signature output: ");
-        console.log(ontropySignature);
+        console.log(ontropySignature.signature.toHex());
 
         // opponentOntropySignature
         const opponentOntropySignature = this.sdk.createOntropySignature(
