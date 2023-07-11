@@ -1,17 +1,8 @@
 # Connect Four
 
-*Copyright 2016-2023, Caleb Evans*  
-*Released under the MIT License*
-
-[![tests](https://github.com/caleb531/connect-four/actions/workflows/tests.yml/badge.svg)](https://github.com/caleb531/connect-four/actions/workflows/tests.yml)
-<!-- [![Coverage Status](https://coveralls.io/repos/github/caleb531/connect-four/badge.svg?branch=main)](https://coveralls.io/github/caleb531/connect-four?branch=main) -->
-
 This is the slickest Connect Four app around, written using HTML5, JavaScript,
 and Mithril (a React-like framework). You can play on your phone or computer,
 with a friend or against the AI. Just be sure to enjoy and have fun. :)
-
-You can play the app online at:  
-https://connectfour.calebevans.me/
 
 ## Implementation
 
@@ -38,8 +29,6 @@ example, every single chip touching an empty slot is worth four points, a
 connect-two is worth nine points, a connect-three is worth sixteen points, and
 so on. A winning connection of four or more chips is given the maximum/minimum
 score.
-
-In the app, the AI player is lovingly referred to as "Mr. AI".
 
 [minimax]: https://en.wikipedia.org/wiki/Minimax
 [abp]: https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning

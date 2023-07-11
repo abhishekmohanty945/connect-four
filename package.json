@@ -17,20 +17,10 @@
     "test": "playwright test",
     "example": "ts-node examples/example.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/caleb531/connect-four.git"
-  },
   "keywords": [
     "connect-four",
     "mithril"
   ],
-  "author": "Caleb Evans",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/caleb531/connect-four/issues"
-  },
-  "homepage": "https://github.com/caleb531/connect-four#readme",
   "dependencies": {
     "@fontsource/ubuntu": "^5.0.0",
     "buffer": "^6.0.3",
