@@ -17,6 +17,14 @@
       sizes="192x192"
     />
   </head>
+  <style>
+    #myDIV {
+      height: 250px;
+      width: 100vw;
+      overflow: auto;
+      background: #111111;
+    }
+    </style>
   <body>
     <noscript>
       <h1>Connect Four</h1>
@@ -32,8 +40,9 @@
     </noscript>
 
     <main></main>
-
+    <div id="myDIV">
     <div id="console-log-output"></div>
+    </div>
     <script type="module">
       console.log = function (...args) {
         var logElement = document.createElement("p");
@@ -46,10 +55,11 @@
 
     <script type="module" src="/scripts/index.js"></script>
     <script src="/scripts/bundle.js"></script>
-    <!-- <script>
-      !function(o){console.old=console.log,console.log=function(){var n,e,t="";for(e=0;e<arguments.length;e++)t+='<span class="log-'+typeof(n=arguments[e])+'">',"object"==typeof n&&"object"==typeof JSON&&"function"==typeof JSON.stringify?t+=JSON.stringify(n):t+=n,t+="</span>&nbsp;";o.innerHTML+=t+"<br>",console.old.apply(void 0,arguments)}}
-      (document.body);
-    </script> -->
-
+    <script type="module">
+      function myFunction() {
+        const element = document.getElementById("console-log-output");
+        element.scrollIntoView();
+      };
+    </script>
   </body>
 </html>
