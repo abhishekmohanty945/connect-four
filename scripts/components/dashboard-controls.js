@@ -70,6 +70,12 @@ class DashboardControlsComponent {
   setNewPlayerName(inputEvent) {
     this.newPlayerName = inputEvent.target.value.trim();
     inputEvent.redraw = false;
+
+    let qrcode = new QRcode(document.getElementById("qrcode"), {
+      text: window.location.href,
+      width: 128,
+      height: 128
+    });
   }
 
   submitNewPlayer(submitEvent, roomCode) {
@@ -116,6 +122,7 @@ class DashboardControlsComponent {
     this.shareLinkCopier = new ClipboardJS(dom);
   }
 
+
   view({ attrs: { roomCode } }) {
     return m('div#dashboard-controls', [
 
@@ -145,7 +152,10 @@ class DashboardControlsComponent {
           m('button#copy-share-link', {
             'data-clipboard-text': window.location.href,
             oncreate: ({ dom }) => this.configureCopyControl({ dom })
-          }, 'Copy')
+          }, 'Copy'),
+          m('img#qrcode', {
+            src: ''
+          })
         ]),
         // If P1 is still waiting for players, offer P1 the option to close
         // room

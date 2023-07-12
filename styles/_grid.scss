@@ -65,6 +65,7 @@
   }
 }
 
+
 .chip {
   @each $player-color-name, $player-color in $player-colors {
     &.#{$player-color-name} {
@@ -73,14 +74,31 @@
       --chip-border-color-light: #{darken($player-color, 10%)};
       --chip-border-color-dark: #{darken(map-get($player-colors-dark, $player-color-name), 10%)};
     }
-  }
-  .chip-inner {
-    border-color: var(--chip-border-color-light);
-    background-color: var(--chip-background-color-light);
-    @include dark-mode() {
-      border-color: var(--chip-border-color-dark);
-      background-color: var(--chip-background-color-dark);
+
+    &.red {
+      .chip-inner {
+        background: url("./icons/ontropy.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      
     }
+
+    &.black {
+      .chip-inner {
+        background: url("./icons/chainlink.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  
+  .chip-inner {
+    border-color: transparent;
+    background-color: var(--chip-background-color-light);
   }
   // The pending chip is the to-be-placed chip above the board
   &.pending {
@@ -91,7 +109,7 @@
     z-index: 20;
     animation: fade-in-chip 100ms ease-in-out forwards;
     .chip-inner-real {
-      animation: pulse-chip 1000ms ease-in-out infinite forwards;
+      // animation: pulse-chip 1000ms ease-in-out infinite forwards;
     }
     // The clone is used to restore full opacity from the pulse animation of the
     // real inner chip
