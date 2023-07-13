@@ -70,21 +70,6 @@ class DashboardControlsComponent {
   setNewPlayerName(inputEvent) {
     this.newPlayerName = inputEvent.target.value.trim();
     inputEvent.redraw = false;
-    let link = "https://your-link.com";
-
-    QRCode.toDataURL(link)
-    .then(url => {
-      console.log("qr: ", url);
-    })
-    .catch(err => {
-      console.error(err);
-    });
-
-    // let qrcode = QRcode(document.getElementById("qrcode"), {
-    //   text: window.location.href,
-    //   width: 128,
-    //   height: 128
-    // });
   }
 
   submitNewPlayer(submitEvent, roomCode) {
@@ -168,7 +153,7 @@ class DashboardControlsComponent {
           m('button#copy-share-link', {
             'data-clipboard-text': window.location.href,
             oncreate: ({ dom }) => this.configureCopyControl({ dom })
-          }, 'Copy'),
+          }, 'Copy')
         ]),
         // If P1 is still waiting for players, offer P1 the option to close
         // room
