@@ -35,7 +35,7 @@ export default {
     "'self'",
     "ws://localhost:24678",
     "ws://localhost:8080",
-    "wss://connectfour.calebevans.me",
+    "wss://game.ontropy.io",
     "http://localhost:24678",
     "https://fonts.googleapis.com",
     "https://fonts.gstatic.com",
