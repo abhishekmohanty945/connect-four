@@ -49,7 +49,6 @@ async function createExpressServer() {
   // index.html instead of index.ejs so Vite can recognize entry point)
   app.set('view engine', 'html');
   app.engine('html', (await import('ejs')).renderFile);
-  app.use(express.static('/scripts/bundle.js'));
   // Force HTTPS on production
   if (process.env.NODE_ENV === 'production' && !process.env.DISABLE_SSL) {
     app.enable('trust proxy');
@@ -74,7 +73,7 @@ async function createExpressServer() {
     crossOriginEmbedderPolicy: false,
     // Define relatively-strict Content Security Policy (CSP)
     contentSecurityPolicy: {
-      useDefaults: true,
+      useDefaults: false,
       directives: cspDirectives
     }
   }));
@@ -143,16 +142,10 @@ async function createExpressServer() {
       '/sw.js',
       express.static(path.join(path.dirname(__dirname), 'dist', 'service-worker.js'))
     );
-    // We set this *after* the / route above because that / route needs to take
-    // precedence (so that Vite/EJS can process index.html)
     app.use(express.static(path.join(path.dirname(__dirname), 'dist')));
+    express.static(path.join(path.dirname(__dirname), 'dist', 'scripts'));
   }
-
-  // HTTP server wrapper
-
   const server = http.Server(app);
-  // Warning: app.listen(8080) will not work here; see
-  // <https://github.com/socketio/socket.io/issues/2075>
   server.listen(process.env.PORT || 8080, () => {
     console.log(`Server started. Listening on port ${server.address().port}`);
   });

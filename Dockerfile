@@ -9,16 +9,14 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 
 # Set up project
 WORKDIR /usr/app
-# Because the package.json and pnpm-lock.yaml are the only files needed to
-# install dependencies, we copy them first and separately from the other project
-# files; this allows us to take advantage of Docker's layer caching feature,
-# which in turn speeds up subsequent Docker builds (see
-# <https://stackoverflow.com/questions/51533448/why-copy-package-json-precedes-copy>
-# for more details)
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 COPY ./ ./
 RUN pnpm build
+
+# Copy bundle.js into dist folder
+RUN mkdir -p ./dist/scripts
+COPY path/to/your/bundle.js ./dist/scripts/bundle.js
 
 # Start server
 EXPOSE 8080
