@@ -4,6 +4,7 @@ import classNames from "../classnames.js";
 import Game from "../models/game.js";
 import GridComponent from "./grid.js";
 import DashboardComponent from "./dashboard.js";
+import SavedComponent from "./saved.js";
 import PlayerAreaComponent from "./player-area.js";
 import ReactionPickerComponent from "./reaction-picker.js";
 
@@ -118,6 +119,10 @@ class GameComponent {
             game: this.game,
             session: this.session,
             roomCode,
+          }),
+          m(SavedComponent, {
+            game: this.game,
+            session: this.session,
           }),
         ]),
         m("div.game-column", [

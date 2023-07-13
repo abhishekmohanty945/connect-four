@@ -43,3 +43,14 @@ a {
   color: $input-focus-border-color;
   text-decoration: none;
 }
+
+
+.text, .textfinal {
+  font-size: 12px;
+  margin-top: 24px;
+  background: #858484;
+  border-radius: 8px;
+  border: 1px solid #000;
+  padding: 10px 15px;
+  text-align: left;
+}
