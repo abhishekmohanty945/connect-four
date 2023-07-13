@@ -91,6 +91,9 @@ devDependencies:
   '@playwright/test':
     specifier: ^1.32.3
     version: 1.32.3
+  '@types/qrcode':
+    specifier: ^1.5.1
+    version: 1.5.1
   autoprefixer:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.23)
@@ -2076,6 +2079,12 @@ packages:
     dependencies:
       '@types/node': 18.15.13
     dev: false
+
+  /@types/qrcode@1.5.1:
+    resolution: {integrity: sha512-HpSN675K0PmxIDRpjMI3Mc2GiKo3dNu+X/F5SoItiaDS1lVfgC6Wac1c5lQDfKWbTJUSHWiHKzpJpBZG7k9gaA==}
+    dependencies:
+      '@types/node': 18.15.13
+    dev: true
 
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}

@@ -10,7 +10,6 @@ class DashboardControlsComponent {
     this.game = game;
     this.session = session;
   }
-
   // Prepare game players by creating new players (if necessary) and deciding
   // which player has the starting move
   setPlayers(gameType) {
@@ -130,6 +129,13 @@ class DashboardControlsComponent {
 
   configureCopyControl({ dom }) {
     this.shareLinkCopier = new ClipboardJS(dom);
+    QRCode.toDataURL(document.getElementById('canvas'), window.location.href, function (error) {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('QR code generated successfully!');
+      }
+    });
   }
 
 
@@ -163,12 +169,10 @@ class DashboardControlsComponent {
             'data-clipboard-text': window.location.href,
             oncreate: ({ dom }) => this.configureCopyControl({ dom })
           }, 'Copy'),
-          m('img#qrcode', {
-            src: ''
-          })
         ]),
         // If P1 is still waiting for players, offer P1 the option to close
         // room
+        m('canvas#canvas'),
         m('button.warn', { onclick: () => this.closeRoom() }, 'Close Room')
       ] :
 
