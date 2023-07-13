@@ -16,7 +16,7 @@ RUN pnpm build
 
 # Copy bundle.js into dist folder
 RUN mkdir -p ./dist/scripts
-COPY path/to/your/bundle.js ./dist/scripts/bundle.js
+COPY scripts/bundle.js ./dist/scripts/bundle.js
 
 # Start server
 EXPOSE 8080
