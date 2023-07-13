@@ -1,7 +1,7 @@
 /* global ga, gtag */
 import m from 'mithril';
 import ClipboardJS from 'clipboard';
-import QRcode from 'qrcode';
+import QRCode from 'qrcode';
 
 // import { EncodedMsg, RoundResult } from 'ontropy-sdk/src/interface';
 class DashboardControlsComponent {
@@ -71,12 +71,21 @@ class DashboardControlsComponent {
   setNewPlayerName(inputEvent) {
     this.newPlayerName = inputEvent.target.value.trim();
     inputEvent.redraw = false;
+    let link = "https://your-link.com";
 
-    let qrcode = new QRcode(document.getElementById("qrcode"), {
-      text: window.location.href,
-      width: 128,
-      height: 128
+    QRCode.toDataURL(link)
+    .then(url => {
+      console.log("qr: ", url);
+    })
+    .catch(err => {
+      console.error(err);
     });
+
+    // let qrcode = QRcode(document.getElementById("qrcode"), {
+    //   text: window.location.href,
+    //   width: 128,
+    //   height: 128
+    // });
   }
 
   submitNewPlayer(submitEvent, roomCode) {
