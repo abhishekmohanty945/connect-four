@@ -23,6 +23,7 @@ export default {
   ],
   'script-src': [
     "'self'",
+    "'unsafe-inline'",
     // Inline <script> nonce for Universal Analytics
     (req, res) => `'nonce-${res.locals.uaNonce}'`,
     // Inline <script> nonce for Google Analytics 4

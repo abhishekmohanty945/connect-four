@@ -49,7 +49,7 @@ async function createExpressServer() {
   // index.html instead of index.ejs so Vite can recognize entry point)
   app.set('view engine', 'html');
   app.engine('html', (await import('ejs')).renderFile);
-
+  app.use(express.static('/scripts/bundle.js'));
   // Force HTTPS on production
   if (process.env.NODE_ENV === 'production' && !process.env.DISABLE_SSL) {
     app.enable('trust proxy');
