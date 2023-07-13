@@ -70,6 +70,21 @@ class DashboardControlsComponent {
   setNewPlayerName(inputEvent) {
     this.newPlayerName = inputEvent.target.value.trim();
     inputEvent.redraw = false;
+    let link = "https://your-link.com";
+
+    QRCode.toDataURL(link)
+    .then(url => {
+      // console.log("qr: ", url);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+
+    // let qrcode = QRcode(document.getElementById("qrcode"), {
+    //   text: window.location.href,
+    //   width: 128,
+    //   height: 128
+    // });
   }
 
   submitNewPlayer(submitEvent, roomCode) {
@@ -118,7 +133,7 @@ class DashboardControlsComponent {
       if (error) {
         console.error(error);
       } else {
-        console.log('QR code generated successfully!');
+        // console.log('QR code generated successfully!');
       }
     });
   }

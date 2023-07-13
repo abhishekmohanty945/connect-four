@@ -25,7 +25,7 @@ class GameComponent {
     // connection is opened)
     this.listenForOnlineGameEvents({ roomCode });
     this.handlePlayerConnections({ roomCode });
-    console.log('component');
+    // console.log('component');
   }
 
   joinRoom({ roomCode }) {
