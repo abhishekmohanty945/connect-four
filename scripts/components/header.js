@@ -1,12 +1,11 @@
 import m from "mithril";
-import classNames from "../classnames.js";
 class Header {
     view() {
         return (
             "div#header",
             [
                 m("div.header", [
-                    m("img.logo[src='./icons/logo-white.webp']", "Logo Text"),
+                    m("img.logo[src='/assets/logo-white.webp']", "Logo Text"),
                 ])
             ]
         )

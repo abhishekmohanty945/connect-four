@@ -77,7 +77,7 @@
 
     &.red {
       .chip-inner {
-        background: url("./icons/ontropy.jpeg");
+        background: url("/assets/ontropy.jpeg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -87,7 +87,16 @@
 
     &.black {
       .chip-inner {
-        background: url("./icons/chainlink.jpeg");
+        background: url("/assets/chainlink.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    &.blue {
+      .chip-inner {
+        background: url("/assets/chainlink.jpeg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
