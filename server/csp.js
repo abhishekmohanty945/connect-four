@@ -8,7 +8,7 @@ export default {
   ],
   'style-src': [
     "'self'",
-    process.env.NODE_ENV !== 'production' ? "'unsafe-inline'" : '',
+    "'unsafe-inline'",
     "https://fonts.googleapis.com"
   ],
   'img-src': [
