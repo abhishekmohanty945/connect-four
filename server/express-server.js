@@ -74,7 +74,7 @@ async function createExpressServer() {
     crossOriginEmbedderPolicy: false,
     // Define relatively-strict Content Security Policy (CSP)
     contentSecurityPolicy: {
-      useDefaults: false,
+      useDefaults: true,
       directives: cspDirectives
     }
   }));
