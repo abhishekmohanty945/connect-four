@@ -135,6 +135,7 @@ async function createServer() {
       }
       fn({ status: 'placedChip', column });
     }));
+  
 
     // Game management events
 

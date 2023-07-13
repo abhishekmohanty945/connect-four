@@ -39,6 +39,12 @@ class GridComponent extends Emitter {
     this.session.on('receive-next-move', ({ column }) => {
       this.game.emit('online-player:receive-next-move', { column });
     });
+    this.session.on('receive-next-nonce', ({ nonce }) => {
+      this.game.emit('online-player:receive-next-nonce', { nonce });
+    });
+    this.session.on('receive-next-signature', ({ signature }) => {
+      this.game.emit('online-player:receive-next-signature', { signature });
+    });
     // When the local (human) player has placed a chip, send that move to the
     // server
     this.game.on('player:place-chip', ({ player, column }) => {

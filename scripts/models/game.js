@@ -299,6 +299,8 @@ class Game extends Emitter {
     // Remove the event listener for any leftover (unresolved)
     // OnlinePlayer.getNextMove() promise
     this.off('online-player:receive-next-move');
+    this.off('online-player:receive-next-nonce');
+    this.off('online-player:receive-next-signature');
 
     this.currentPlayer = this.players.find((player) => player.color === game.currentPlayer);
     this.requestingPlayer = this.players.find((player) => player.color === game.requestingPlayer);

@@ -1,6 +1,7 @@
 /* global ga, gtag */
 import m from 'mithril';
 import ClipboardJS from 'clipboard';
+import QRcode from 'qrcode';
 
 // import { EncodedMsg, RoundResult } from 'ontropy-sdk/src/interface';
 class DashboardControlsComponent {
