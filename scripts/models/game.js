@@ -47,6 +47,8 @@ class Game extends Emitter {
     this.schnorrSignature = "";
     this.encodeMessage = "";
     this.turns = 0;
+    this.gameEnded = false;
+    this.transactionLink = "";
   }
 
   startGame({ startingPlayer } = {}) {
@@ -64,6 +66,7 @@ class Game extends Emitter {
 
   // End the game without resetting the grid
   endGame() {
+    this.gameEnded = true;
     this.inProgress = false;
     this.currentPlayer = null;
     this.pendingChip = null;
