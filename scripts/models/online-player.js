@@ -16,6 +16,22 @@ class OnlinePlayer extends AsyncPlayer {
     });
   }
 
+  getNextNonce({ game }) {
+    return new Promise((resolve) => {
+      game.once("online-player:receive-next-nonce", ({ nonce }) => {
+        resolve({ nonce });
+      });
+    });
+  }
+
+  getNextSignature({ game }) {
+    return new Promise((resolve) => {
+      game.once("online-player:receive-ontropy-signature", ({ signature }) => {
+        resolve({ signature });
+      });
+    });
+  }
+
 }
 
 OnlinePlayer.prototype.type = 'online';
