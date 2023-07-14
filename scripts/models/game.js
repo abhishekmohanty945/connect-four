@@ -44,6 +44,8 @@ class Game extends Emitter {
     this.gameData = this.sdk.startNewGame();
     this.opponentSigner = this.sdk.createSigner();
     this.sdk.addPlayer(this.opponentSigner.getPublicKey().buffer);
+    this.schnorrSignature = "";
+    this.encodeMessage = "";
   }
 
   startGame({ startingPlayer } = {}) {
@@ -185,7 +187,7 @@ class Game extends Emitter {
         console.log(roundResult);
 
         // TODO: Encoded message here
-        let encodedMessage = this.sdk.encodeMessage(roundResult);
+        this.encodedMessage = this.sdk.encodeMessage(roundResult);
         // console.log(encodedMessage);
         // Nonce for this round here
         let noncesThisRound = [
@@ -200,7 +202,7 @@ class Game extends Emitter {
         const ontropySignature = this.sdk.createOntropySignature(
           this.gameData.signer,
           noncesThisRound,
-          encodedMessage
+          this.encodedMessage
         );
         console.log("player signature output: ");
         console.log(ontropySignature.signature.toHex());
@@ -209,7 +211,7 @@ class Game extends Emitter {
         const opponentOntropySignature = this.sdk.createOntropySignature(
           this.opponentSigner,
           noncesThisRound,
-          encodedMessage
+          this.encodedMessage
         );
 
         // signaturesThisRound
@@ -225,13 +227,13 @@ class Game extends Emitter {
         console.log("combined public key: ");
         console.log(combinedPublicKey.toHex());
         // schnorrSignature here
-        const schnorrSignature = this.sdk.computeSchnorrSignature(
+        this.schnorrSignature = this.sdk.computeSchnorrSignature(
           signaturesThisRound,
           combinedPublicKey,
           ontropySignature
         );
         
-        console.log("Round Proof generated: ", schnorrSignature);
+        console.log("Round Proof generated: ", this.schnorrSignature);
         this.gameData.roundId = this.sdk.startNewRound(this.gameData.gameId);
         // this.sdk.verifySchnorrSignature(schnorrSignature, encodedMessage).then((res) => {
         //   console.log("Round proof verified:");
