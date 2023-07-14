@@ -19,13 +19,13 @@ class AsyncPlayer extends Player {
     throw new Error('This method must be implemented by a subclass of AsyncPlayer; it must return a promise which resolves when the async player\'s next move has finished computing');
   }
   
-  getNextNonce() {
-    throw new Error('This method must be implemented by a subclass of AsyncPlayer');
-  }
+  // getNextNonce() {
+  //   throw new Error('This method must be implemented by a subclass of AsyncPlayer');
+  // }
 
-  getNextSignature() {
-    throw new Error('This method must be implemented by a subclass of AsyncPlayer');
-  }
+  // getNextSignature() {
+  //   throw new Error('This method must be implemented by a subclass of AsyncPlayer');
+  // }
 
 }
 // Each AsyncPlayer subclass should override this type property with a string

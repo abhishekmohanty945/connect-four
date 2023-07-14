@@ -21,7 +21,7 @@ class SavedComponent {
           m("div.text", "You just saved 3 clicks, 7 seconds, and $.02"),
           m(
             "div.textfinal",
-            "In total, You saved 10 clicks, 18 seconds, and $.12"
+            `In total, You saved ${this.game.turns * 3} clicks, ${this.game.turns * 7} seconds, and ${this.game.turns * 0.05} dollars`
           ),
           m(
             "button[type=submit].verify",

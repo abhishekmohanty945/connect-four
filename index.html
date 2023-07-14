@@ -55,6 +55,11 @@
           typeof arg === 'string' && arg.includes('https://') ? `<a href="${arg}" target="_blank">${arg}</a>` : arg
         ).join(' ');
         document.getElementById("console-log-output").appendChild(logElement);
+            // Check if the log includes a link
+        if (args.some(arg => typeof arg === 'string' && arg.includes('https://'))) {
+          // Scroll to the logElement
+          logElement.scrollIntoView({ behavior: "smooth" });
+        }
       };
     </script>     
     <script type="module" src="/scripts/index.js"></script>

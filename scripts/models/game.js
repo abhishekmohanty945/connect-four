@@ -46,6 +46,7 @@ class Game extends Emitter {
     this.sdk.addPlayer(this.opponentSigner.getPublicKey().buffer);
     this.schnorrSignature = "";
     this.encodeMessage = "";
+    this.turns = 0;
   }
 
   startGame({ startingPlayer } = {}) {
@@ -142,6 +143,7 @@ class Game extends Emitter {
     if (this.inProgress) {
       // Switch to next player's turn
       this.currentPlayer = this.getOtherPlayer(this.currentPlayer);
+      this.turns = this.turns + 1;
       this.startTurn();
     }
   }
@@ -153,7 +155,6 @@ class Game extends Emitter {
       column
     });
     let activity = `${chip_row}${column}`;
-    // console.log(chip_row, column);
     this.emit('player:place-chip', this.grid.lastPlacedChip);
     if (this.debug) {
       this.columnHistory.push(activity);
@@ -235,12 +236,6 @@ class Game extends Emitter {
         
         console.log("Round Proof generated: ", this.schnorrSignature);
         this.gameData.roundId = this.sdk.startNewRound(this.gameData.gameId);
-        // this.sdk.verifySchnorrSignature(schnorrSignature, encodedMessage).then((res) => {
-        //   console.log("Round proof verified:");
-        //   console.log(res[0]);
-        //   console.log("Transaction link:");
-        //   console.log(res[1].toString());
-        // });
       }
     }
     this.pendingChip = null;
