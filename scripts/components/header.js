@@ -5,7 +5,7 @@ class Header {
             "div#header",
             [
                 m("div.header", [
-                    m("img.logo[src='/assets/logo-white.webp']", "Logo Text")
+                    m("img.logo[src='/assets/logo-white.png']", "Logo Text")
                 ])
             ]
         );
