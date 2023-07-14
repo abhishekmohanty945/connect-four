@@ -24,6 +24,7 @@ class SavedComponent {
     this.game = game;
     this.session = session;
     this.waiting = false;
+    this.verifiedForTurn2 = false;
   }
 
   verifyFunction() {
@@ -40,6 +41,10 @@ class SavedComponent {
   }
 
   view() {
+    if (this.game.turns === 2 && !this.verifiedForTurn2) {
+      this.verifyFunction();
+      this.verifiedForTurn2 = true;
+    }
     return m("div", [
       this.game.inProgress
         ? m("div.text-parent", [
